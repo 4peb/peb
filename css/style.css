@@ -118,3 +118,55 @@ footer {
 .full-height-main {
   min-height: calc(100vh - 120px); /* header + footer */
 }
+
+/* Auth Form Styling */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  margin: 2rem auto 0 auto;
+  gap: 1rem;
+}
+
+.auth-form input {
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.auth-form button {
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-form p {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.auth-form a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.auth-form .login-link, .auth-form .signup-link {
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  header nav {
+    margin-top: 0.5rem;
+  }
+  .products-grid, .news-grid, .video-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
