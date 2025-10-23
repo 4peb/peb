@@ -144,6 +144,13 @@ main {
   margin: 0 auto;
 }
 
+/* Vertically center product grid in blue-section full-height */
+.blue-section.full-height-section .product-grid {
+  flex: 1;
+  display: grid;
+  align-content: center;
+}
+
 .product-grid .card {
   background: white;
   color: #222;
