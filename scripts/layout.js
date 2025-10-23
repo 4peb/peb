@@ -1,71 +1,48 @@
-// layout.js — shared layout system + dark mode + animations
-
+// --------------------
+// HEADER + FOOTER LAYOUT
+// --------------------
 document.addEventListener("DOMContentLoaded", () => {
-  const header = `
-    <header>
-      <div class="logo">
-        <img src="assets/logo.png" alt="Pebb Logo" />
-        <h1>Pebb</h1>
-      </div>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="watch.html">Watch</a>
-        <a href="news.html">News</a>
-        <a href="about.html">About</a>
-        <button id="theme-toggle" class="theme-btn">☀️</button>
-      </nav>
-    </header>
+  const header = document.createElement("header");
+  header.innerHTML = `
+    <img src="/assets/logo.png" alt="Pebb Logo" class="logo" />
+    <nav>
+      <a href="/" id="nav-home">Home</a>
+      <a href="/shop" id="nav-shop">Shop</a>
+      <a href="/watch" id="nav-watch">Watch</a>
+      <a href="/news" id="nav-news">News</a>
+      <a href="/about" id="nav-about">About</a>
+    </nav>
   `;
 
-  const footer = `
-    <footer>
-      <p>© 2025 Pebb</p>
-    </footer>
-  `;
+  const footer = document.createElement("footer");
+  footer.textContent = "© 2025 Pebb. All rights reserved.";
 
-  // Insert header/footer
-  const headerElement = document.querySelector("header");
-  const footerElement = document.querySelector("footer");
-  if (headerElement) headerElement.outerHTML = header;
-  if (footerElement) footerElement.outerHTML = footer;
+  document.body.prepend(header);
+  document.body.appendChild(footer);
 
-  // === DARK MODE ===
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") document.body.classList.add("dark-mode");
+  // Highlight active link
+  const path = window.location.pathname.replace("/", "") || "home";
+  const activeLink = document.getElementById(`nav-${path}`);
+  if (activeLink) activeLink.classList.add("active");
 
-  document.addEventListener("click", (e) => {
-    if (e.target.id === "theme-toggle") {
-      document.body.classList.toggle("dark-mode");
-      const isDark = document.body.classList.contains("dark-mode");
-      e.target.textContent = isDark ? "🌙" : "☀️";
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    }
+  // Add dark/light toggle
+  const toggle = document.createElement("button");
+  toggle.textContent = "☀️ / 🌙";
+  toggle.className = "theme-toggle";
+  header.appendChild(toggle);
+
+  toggle.addEventListener("click", () => {
+    const body = document.body;
+    body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", body.dataset.theme);
+    updateTheme();
   });
 
-  // === FADE-IN EFFECT ===
-  document.body.classList.add("fade-in");
-});
-// --------------------
-// Dark / Light Mode Toggle
-// --------------------
-const toggle = document.createElement("button");
-toggle.textContent = "☀️ / 🌙";
-toggle.className = "theme-toggle";
-document.querySelector("header").appendChild(toggle);
+  function updateTheme() {
+    const theme = localStorage.getItem("theme") || "light";
+    document.body.dataset.theme = theme;
+    toggle.textContent = theme === "dark" ? "🌙" : "☀️";
+  }
 
-toggle.addEventListener("click", () => {
-  const body = document.body;
-  body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
-  localStorage.setItem("theme", body.dataset.theme);
   updateTheme();
 });
-
-function updateTheme() {
-  const theme = localStorage.getItem("theme") || "light";
-  document.body.dataset.theme = theme;
-  document.querySelector(".theme-toggle").textContent =
-    theme === "dark" ? "🌙" : "☀️";
-}
-
-updateTheme();
