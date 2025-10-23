@@ -192,3 +192,38 @@ footer {
     font-size: 1.8rem;
   }
 }
+/* --------------------
+   DARK / LIGHT MODE
+-------------------- */
+body[data-theme="dark"] {
+  background: #0d1117;
+  color: #e6edf3;
+}
+
+body[data-theme="dark"] header {
+  background: #161b22;
+  box-shadow: 0 1px 4px rgba(255, 255, 255, 0.1);
+}
+
+body[data-theme="dark"] nav a {
+  color: #e6edf3;
+}
+
+body[data-theme="dark"] nav a.active {
+  background: #1f6feb;
+  color: #fff;
+}
+
+body[data-theme="dark"] .blue-box {
+  background: linear-gradient(135deg, #0058cc, #0070f3);
+}
+
+body[data-theme="dark"] .product-grid .card {
+  background: #161b22;
+  color: #e6edf3;
+}
+
+body[data-theme="dark"] footer {
+  background: #161b22;
+  color: #8b949e;
+}
