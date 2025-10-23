@@ -46,3 +46,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // === FADE-IN EFFECT ===
   document.body.classList.add("fade-in");
 });
+// --------------------
+// Dark / Light Mode Toggle
+// --------------------
+const toggle = document.createElement("button");
+toggle.textContent = "☀️ / 🌙";
+toggle.className = "theme-toggle";
+document.querySelector("header").appendChild(toggle);
+
+toggle.addEventListener("click", () => {
+  const body = document.body;
+  body.dataset.theme = body.dataset.theme === "dark" ? "light" : "dark";
+  localStorage.setItem("theme", body.dataset.theme);
+  updateTheme();
+});
+
+function updateTheme() {
+  const theme = localStorage.getItem("theme") || "light";
+  document.body.dataset.theme = theme;
+  document.querySelector(".theme-toggle").textContent =
+    theme === "dark" ? "🌙" : "☀️";
+}
+
+updateTheme();
