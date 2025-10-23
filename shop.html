@@ -1,35 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pebb Shop</title>
-  <link rel="stylesheet" href="/css/style.css" />
-  <script src="/scripts/layout.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pebb - Shop</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <main class="full-height-main">
-    <section class="blue-section full-height-section">
-      <h1 class="title">Our Products</h1>
-      <p class="subtitle">Explore what we have to offer.</p>
-      <div class="product-grid">
-        <div class="card">
-          <img src="/assets/logo.png" alt="Product 1" />
-          <h3>Sample Product</h3>
-          <p class="price">$9.99</p>
-          <button class="buy-btn">Buy Now</button>
-        </div>
-        <div class="card">
-          <img src="/assets/logo.png" alt="Product 2" />
-          <h3>Another Product</h3>
-          <p class="price">$14.99</p>
-          <button class="buy-btn">Buy Now</button>
-        </div>
-        <!-- Add more product cards as needed -->
-      </div>
-    </section>
-  </main>
-</body>
-</html>
 
+<!-- Header -->
+<header>
+  <a href="/"><img src="/assets/logo.png" class="logo" alt="Pebb Logo"></a>
+  <nav>
+    <a href="/" >Home</a>
+    <a href="/shop" class="active">Shop</a>
+    <a href="/news">News</a>
+    <a href="/watch">Watch</a>
+    <a href="/about">About</a>
+  </nav>
+  <div class="auth-buttons">
+    <a href="/signup" class="btn signup-btn">Sign Up</a>
+    <a href="/login" class="btn login-btn">Sign In</a>
+  </div>
+</header>
+
+<main class="full-height-main">
+  <section class="blue-section">
+    <h1>Our Products</h1>
+    <div class="products-grid">
+      <div class="product-card">Product 1</div>
+      <div class="product-card">Product 2</div>
+      <div class="product-card">Product 3</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © 2025 Pebb
+</footer>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+  const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  window.supabase = supabase;
+
+  async function updateHeaderUser() {
+    const { data: { user } } = await supabase.auth.getUser();
+    const authButtons = document.querySelector('.auth-buttons');
+    if (!authButtons) return;
+
+    if (user) {
+      authButtons.innerHTML = `
+        <span class="user-email">${user.email}</span>
+        <button id="logout-btn" class="btn logout-btn">Logout</button>
+      `;
+      document.getElementById('logout-btn').addEventListener('click', async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) alert("Error: " + error.message);
+        else updateHeaderUser();
+      });
+    } else {
+      authButtons.innerHTML = `
+        <a href="/signup" class="btn signup-btn">Sign Up</a>
+        <a href="/login" class="btn login-btn">Sign In</a>
+      `;
+    }
+  }
+
+  updateHeaderUser();
+</script>
+</body>
 </html>
