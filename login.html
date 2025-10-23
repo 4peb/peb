@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pebb Login</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header>
+    <img src="/assets/logo.png" class="logo" alt="Pebb Logo">
+    <nav>
+      <a href="/" class="active">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/news">News</a>
+      <a href="/watch">Watch</a>
+      <a href="/about">About</a>
+    </nav>
+  </header>
+
+  <main class="full-height-main">
+    <section class="blue-section full-height-section">
+      <h1 class="title">Login / Signup</h1>
+      <p class="subtitle">Access your account to save favorites and more.</p>
+
+      <div class="page-content" style="max-width:400px;margin:0 auto;text-align:left;">
+
+        <!-- Signup Form -->
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          <input type="email" id="signup-email" placeholder="Email" required style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
+          <input type="password" id="signup-password" placeholder="Password" required style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
+          <button type="submit" style="background:#fff;color:#0070f3;padding:0.5rem 1rem;border:none;border-radius:0.5rem;cursor:pointer;width:100%;">Sign Up</button>
+        </form>
+
+        <hr style="margin:2rem 0;border:0;border-top:1px solid rgba(255,255,255,0.5);">
+
+        <!-- Login Form -->
+        <h2>Login</h2>
+        <form id="login-form">
+          <input type="email" id="login-email" placeholder="Email" required style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
+          <input type="password" id="login-password" placeholder="Password" required style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
+          <button type="submit" style="background:#fff;color:#0070f3;padding:0.5rem 1rem;border:none;border-radius:0.5rem;cursor:pointer;width:100%;">Login</button>
+        </form>
+
+        <!-- Logout -->
+        <button id="logout-btn" style="margin-top:2rem;background:#fff;color:#0070f3;padding:0.5rem 1rem;border:none;border-radius:0.5rem;cursor:pointer;width:100%;">Logout</button>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Pebb
+  </footer>
+
+  <!-- -----------------------------
+       Supabase SDK + Auth JS
+       ----------------------------- -->
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    // Replace with your Supabase info
+    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    window.supabase = supabase;
+
+    // Signup
+    const signupForm = document.getElementById('signup-form');
+    signupForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
+      const { user, error } = await supabase.auth.signUp({ email, password });
+      if (error) alert("Error: " + error.message);
+      else alert("Signup successful! Please check your email to confirm.");
+      signupForm.reset();
+    });
+
+    // Login
+    const loginForm = document.getElementById('login-form');
+    loginForm?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      const { user, error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) alert("Error: " + error.message);
+      else alert("Login successful! Welcome " + user.email);
+      loginForm.reset();
+    });
+
+    // Logout
+    const logoutBtn = document.getElementById('logout-btn');
+    logoutBtn?.addEventListener('click', async () => {
+      const { error } = await supabase.auth.signOut();
+      if (error) alert("Error: " + error.message);
+      else alert("Logged out successfully!");
+    });
+  </script>
+
+</body>
+</html>
