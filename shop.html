@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pebb | Shop</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
-  <header></header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pebb Shop</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <img src="/assets/logo.png" alt="Pebb Logo" class="logo" />
+      <nav>
+        <a href="/">Home</a>
+        <a href="/shop">Shop</a>
+        <a href="/watch">Watch</a>
+        <a href="/news">News</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <h2>Shop</h2>
-        <p>Our future store — where ideas take shape.</p>
-      </div>
-    </section>
-  </main>
+    <main class="content">
+      <h1>Shop</h1>
+      <p>Browse our latest products below!</p>
 
-  <footer></footer>
-  <script src="scripts/layout.js"></script>
-</body>
+      <div id="product-grid" class="grid"></div>
+    </main>
+
+    <footer>
+      <p>© 2025 Pebb — built to grow into anything.</p>
+    </footer>
+
+    <script src="/scripts/shop.js"></script>
+  </body>
 </html>
