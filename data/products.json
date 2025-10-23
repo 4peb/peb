@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Pebble Hoodie",
+    "price": 29.99,
+    "image": "assets/logo.png",
+    "description": "Cozy hoodie with the Pebb logo."
+  },
+  {
+    "id": 2,
+    "name": "Pebble Mug",
+    "price": 12.50,
+    "image": "assets/logo.png",
+    "description": "Perfect for late-night coding sessions."
+  }
+]
