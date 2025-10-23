@@ -1,4 +1,4 @@
-// layout.js — shared layout system for Pebb
+// layout.js — shared layout system + dark mode + animations
 
 document.addEventListener("DOMContentLoaded", () => {
   const header = `
@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a href="watch.html">Watch</a>
         <a href="news.html">News</a>
         <a href="about.html">About</a>
+        <button id="theme-toggle" class="theme-btn">☀️</button>
       </nav>
     </header>
   `;
@@ -23,10 +24,25 @@ document.addEventListener("DOMContentLoaded", () => {
     </footer>
   `;
 
-  // Insert header + footer if <header> or <footer> tags exist
+  // Insert header/footer
   const headerElement = document.querySelector("header");
   const footerElement = document.querySelector("footer");
-
   if (headerElement) headerElement.outerHTML = header;
   if (footerElement) footerElement.outerHTML = footer;
+
+  // === DARK MODE ===
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") document.body.classList.add("dark-mode");
+
+  document.addEventListener("click", (e) => {
+    if (e.target.id === "theme-toggle") {
+      document.body.classList.toggle("dark-mode");
+      const isDark = document.body.classList.contains("dark-mode");
+      e.target.textContent = isDark ? "🌙" : "☀️";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+  });
+
+  // === FADE-IN EFFECT ===
+  document.body.classList.add("fade-in");
 });
