@@ -1,45 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pebb Sign Up</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pebb - Sign Up</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <main class="auth-page">
-    <section class="auth-container">
-      <h1>Create Account</h1>
-      <p>Sign up to start using Pebb.</p>
 
-      <form id="signup-form">
-        <input type="email" id="signup-email" placeholder="Email" required>
-        <input type="password" id="signup-password" placeholder="Password" required>
-        <button type="submit" class="btn primary-btn">Sign Up</button>
-      </form>
+<header>
+  <a href="/"><img src="/assets/logo.png" class="logo" alt="Pebb Logo"></a>
+  <nav>
+    <a href="/" >Home</a>
+    <a href="/shop">Shop</a>
+    <a href="/news">News</a>
+    <a href="/watch">Watch</a>
+    <a href="/about">About</a>
+  </nav>
+  <div class="auth-buttons">
+    <a href="/signup" class="btn signup-btn">Sign Up</a>
+    <a href="/login" class="btn login-btn">Sign In</a>
+  </div>
+</header>
 
-      <p class="switch-text">
-        Already have an account? <a href="/login">Sign In</a>
-      </p>
-    </section>
-  </main>
+<main class="full-height-main">
+  <section class="blue-section">
+    <h1>Create Your Account</h1>
+    <p>Sign up to unlock all features of Pebb.</p>
 
-  <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-    const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
-    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    <form id="signup-form" class="auth-form">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" class="btn signup-btn">Sign Up</button>
+      <p>Already have an account? <a href="/login" class="login-link">Sign In</a></p>
+      <p id="auth-message"></p>
+    </form>
+  </section>
+</main>
 
-    const signupForm = document.getElementById('signup-form');
-    signupForm?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('signup-email').value;
-      const password = document.getElementById('signup-password').value;
-      const { user, error } = await supabase.auth.signUp({ email, password });
-      if (error) alert("Error: " + error.message);
-      else alert("Signup successful! Please check your email to confirm.");
-      signupForm.reset();
-    });
-  </script>
+<footer>
+  © 2025 Pebb
+</footer>
+
+<script type="module">
+  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+  const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Signup form
+  document.getElementById('signup-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const { data, error } = await supabase.auth.signUp({ email, password });
+    const msg = document.getElementById('auth-message');
+    if (error) msg.textContent = error.message;
+    else msg.textContent = 'Signup successful! Check your email to confirm.';
+  });
+</script>
 </body>
 </html>
