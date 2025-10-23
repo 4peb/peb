@@ -7,89 +7,29 @@
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+  <main class="auth-page">
+    <section class="auth-container">
+      <h1>Welcome Back!</h1>
+      <p>Sign in to access your account.</p>
 
-  <!-- Header -->
-  <header>
-    <img src="/assets/logo.png" class="logo" alt="Pebb Logo">
-    <nav>
-      <a href="/" class="active">Home</a>
-      <a href="/shop">Shop</a>
-      <a href="/news">News</a>
-      <a href="/watch">Watch</a>
-      <a href="/about">About</a>
-    </nav>
-  </header>
+      <form id="login-form">
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit" class="btn primary-btn">Sign In</button>
+      </form>
 
-  <!-- Main Content -->
-  <main class="full-height-main">
-    <section class="blue-section full-height-section">
-      <h1 class="title">Login / Signup</h1>
-      <p class="subtitle">Access your account to save favorites and more.</p>
-
-      <div class="page-content" style="max-width:400px;margin:0 auto;text-align:left;">
-
-        <!-- Signup Form -->
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-          <input type="email" id="signup-email" placeholder="Email" required
-                 style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
-          <input type="password" id="signup-password" placeholder="Password" required
-                 style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
-          <button type="submit"
-                  style="background:#fff;color:#0070f3;padding:0.5rem 1rem;border:none;border-radius:0.5rem;cursor:pointer;width:100%;">Sign Up</button>
-        </form>
-
-        <hr style="margin:2rem 0;border:0;border-top:1px solid rgba(255,255,255,0.5);">
-
-        <!-- Login Form -->
-        <h2>Login</h2>
-        <form id="login-form">
-          <input type="email" id="login-email" placeholder="Email" required
-                 style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
-          <input type="password" id="login-password" placeholder="Password" required
-                 style="width:100%;margin-bottom:1rem;padding:0.5rem;border-radius:0.5rem;border:none;">
-          <button type="submit"
-                  style="background:#fff;color:#0070f3;padding:0.5rem 1rem;border:none;border-radius:0.5rem;cursor:pointer;width:100%;">Login</button>
-        </form>
-
-        <!-- Logout Button -->
-        <button id="logout-btn"
-                style="margin-top:2rem;background:#fff;color:#0070f3;padding:0.5rem 1rem;border:none;border-radius:0.5rem;cursor:pointer;width:100%;">Logout</button>
-
-      </div>
+      <p class="switch-text">
+        Don't have an account? <a href="/signup">Sign Up</a>
+      </p>
     </section>
   </main>
 
-  <footer>
-    © 2025 Pebb
-  </footer>
-
-  <!-- -----------------------------
-       Supabase SDK + Auth JS
-       ----------------------------- -->
   <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-
-    // 🔑 REPLACE THESE with your Supabase credentials
     const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
     const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    window.supabase = supabase; // make globally accessible
-
-    // --- Signup ---
-    const signupForm = document.getElementById('signup-form');
-    signupForm?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('signup-email').value;
-      const password = document.getElementById('signup-password').value;
-      const { user, error } = await supabase.auth.signUp({ email, password });
-      if (error) alert("Error: " + error.message);
-      else alert("Signup successful! Please check your email to confirm.");
-      signupForm.reset();
-    });
-
-    // --- Login ---
     const loginForm = document.getElementById('login-form');
     loginForm?.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -100,15 +40,6 @@
       else alert("Login successful! Welcome " + user.email);
       loginForm.reset();
     });
-
-    // --- Logout ---
-    const logoutBtn = document.getElementById('logout-btn');
-    logoutBtn?.addEventListener('click', async () => {
-      const { error } = await supabase.auth.signOut();
-      if (error) alert("Error: " + error.message);
-      else alert("Logged out successfully!");
-    });
   </script>
-
 </body>
 </html>
