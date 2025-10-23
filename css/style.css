@@ -1,75 +1,185 @@
-// layout.js — safe header/footer injection + dark mode + active link
-(function() {
-  function buildHeader() {
-    return `
-      <header>
-        <div class="logo">
-          <img src="assets/logo.png" alt="Pebb Logo" />
-          <h1>Pebb</h1>
-        </div>
-        <nav>
-          <a href="index.html">Home</a>
-          <a href="shop.html">Shop</a>
-          <a href="watch.html">Watch</a>
-          <a href="news.html">News</a>
-          <a href="about.html">About</a>
-          <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">☀️</button>
-        </nav>
-      </header>
-    `;
-  }
+/* ========== Pebb style.css ========== */
 
-  function buildFooter() {
-    return `<footer><p>© 2025 Pebb</p></footer>`;
-  }
+/* Reset-ish */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
 
-  function setActiveNav() {
-    try {
-      const links = document.querySelectorAll("nav a");
-      const current = window.location.pathname.split("/").pop() || "index.html";
-      links.forEach(a => {
-        const href = a.getAttribute("href");
-        if (!href) return;
-        if (href === current) a.classList.add("active");
-        else a.classList.remove("active");
-      });
-    } catch (e) { /* ignore */ }
-  }
+/* Base */
+body {
+  font-family: "Segoe UI", Roboto, system-ui, -apple-system, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+  color: #222;
+  line-height: 1.45;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  document.addEventListener("DOMContentLoaded", () => {
-    // Only insert header/footer if placeholders exist
-    const headerEl = document.querySelector("header");
-    const footerEl = document.querySelector("footer");
-    if (headerEl && headerEl.innerHTML.trim() === "") {
-      headerEl.outerHTML = buildHeader();
-    } else if (!headerEl) {
-      // if no header placeholder found, insert at top of body
-      document.body.insertAdjacentHTML("afterbegin", buildHeader());
-    }
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 12px 28px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
 
-    if (footerEl && footerEl.innerHTML.trim() === "") {
-      footerEl.outerHTML = buildFooter();
-    } else if (!footerEl) {
-      document.body.insertAdjacentHTML("beforeend", buildFooter());
-    }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-    // theme
-    const saved = localStorage.getItem("theme");
-    if (saved === "dark") document.body.classList.add("dark-mode");
-    setActiveNav();
+.logo img {
+  height: 44px;
+  width: 44px;
+  object-fit: contain;
+}
 
-    // theme toggle listener
-    document.addEventListener("click", (e) => {
-      const t = e.target;
-      if (t && t.id === "theme-toggle") {
-        document.body.classList.toggle("dark-mode");
-        const isDark = document.body.classList.contains("dark-mode");
-        t.textContent = isDark ? "🌙" : "☀️";
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-      }
-    });
+.logo h1 {
+  font-size: 1.2rem;
+  color: #111;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
 
-    // small fade-in
-    document.body.classList.add("fade-in");
-  });
-})();
+/* NAV */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.12s;
+}
+
+nav a:hover {
+  color: #0078ff;
+  transform: translateY(-1px);
+}
+
+nav a.active {
+  background-color: rgba(0,120,255,0.08);
+  color: #0078ff;
+}
+
+/* theme button */
+.theme-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+  border-radius: 8px;
+}
+
+/* MAIN / HERO */
+main {
+  flex: 1;
+}
+
+.hero {
+  min-height: 68vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  text-align: center;
+  background: linear-gradient(120deg,#0078ff 0%, #00c6ff 100%);
+  color: #fff;
+}
+
+.hero-content {
+  max-width: 820px;
+  padding: 12px;
+}
+
+.hero h2 {
+  font-size: clamp(1.6rem, 2.4vw, 2.6rem);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: clamp(1rem, 1.1vw, 1.18rem);
+  margin-bottom: 20px;
+  opacity: 0.95;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 26px;
+  background: #fff;
+  color: #0078ff;
+  font-weight: 700;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,120,255,0.12);
+}
+
+/* FOOTER */
+footer {
+  background-color: #ffffff;
+  text-align: center;
+  padding: 18px 20px;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* FADE-IN */
+body.fade-in {
+  animation: pebbFadeIn 0.7s ease;
+}
+
+@keyframes pebbFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* DARK MODE */
+body.dark-mode {
+  background-color: #0f1113;
+  color: #e9eef6;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+  background-color: #0b0b0b;
+  box-shadow: none;
+}
+
+body.dark-mode nav a {
+  color: #dbefff;
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(120deg,#192032 0%, #283142 100%);
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  header { padding: 10px 16px; }
+  .logo h1 { display: none; } /* keep logo image only on phone */
+  nav { gap: 8px; }
+  .hero { padding: 36px 14px; min-height: 60vh; }
+}
