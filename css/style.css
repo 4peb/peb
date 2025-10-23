@@ -89,33 +89,28 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem;
+  width: 100%;
 }
 
 /* --------------------
-   BLUE BOX CONTAINER
+   FULL-WIDTH BLUE SECTION
 -------------------- */
-.blue-box {
+.blue-section {
+  width: 100%;
   background: linear-gradient(135deg, #0070f3, #0099ff);
   color: white;
-  border-radius: 2rem;
-  padding: 3rem 2rem;
-  margin: 2rem auto;
-  width: 90%;
-  max-width: 1000px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  padding: 4rem 1rem;
   text-align: center;
 }
 
-.blue-box .title {
-  font-size: 2.3rem;
+.blue-section .title {
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-.blue-box .subtitle {
-  font-size: 1.1rem;
-  font-weight: 400;
+.blue-section .subtitle {
+  font-size: 1.2rem;
   opacity: 0.9;
   margin-bottom: 2rem;
 }
@@ -129,7 +124,7 @@ main {
   gap: 1.25rem;
   justify-items: center;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -200,12 +195,12 @@ footer {
     padding: 1rem;
   }
 
-  .blue-box {
-    padding: 2rem 1rem;
+  .blue-section {
+    padding: 2.5rem 1rem;
   }
 
-  .blue-box .title {
-    font-size: 1.8rem;
+  .blue-section .title {
+    font-size: 2rem;
   }
 }
 
@@ -231,7 +226,7 @@ body[data-theme="dark"] nav a.active {
   color: #fff;
 }
 
-body[data-theme="dark"] .blue-box {
+body[data-theme="dark"] .blue-section {
   background: linear-gradient(135deg, #0058cc, #0070f3);
 }
 
