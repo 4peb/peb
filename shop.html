@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pebb Shop</title>
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
-    <header>
-      <img src="/assets/logo.png" alt="Pebb Logo" class="logo" />
-      <nav>
-        <a href="/">Home</a>
-        <a href="/shop" class="active">Shop</a>
-        <a href="/watch">Watch</a>
-        <a href="/news">News</a>
-        <a href="/about">About</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="blue-box">
-        <div class="inner-content">
-          <h1 class="title">Shop</h1>
-          <p class="subtitle">Explore exclusive Pebb products.</p>
-
-          <div id="product-grid" class="product-grid"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pebb Shop</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/scripts/layout.js" defer></script>
+</head>
+<body>
+  <main>
+    <section class="blue-section">
+      <h1 class="title">Our Products</h1>
+      <p class="subtitle">Explore what we have to offer.</p>
+      <div class="product-grid">
+        <div class="card">
+          <img src="/assets/logo.png" alt="Product 1" />
+          <h3>Sample Product</h3>
+          <p class="price">$9.99</p>
+          <button class="buy-btn">Buy Now</button>
         </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>© 2025 Pebb — built to grow into anything.</p>
-    </footer>
-
-    <script src="/scripts/shop.js"></script>
-  </body>
+      </div>
+    </section>
+  </main>
+</body>
 </html>
