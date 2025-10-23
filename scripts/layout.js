@@ -1,6 +1,3 @@
-// --------------------
-// HEADER + FOOTER LAYOUT
-// --------------------
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.createElement("header");
   header.innerHTML = `
@@ -25,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const activeLink = document.getElementById(`nav-${path}`);
   if (activeLink) activeLink.classList.add("active");
 
-  // Add dark/light toggle
+  // Dark/light toggle
   const toggle = document.createElement("button");
   toggle.textContent = "☀️ / 🌙";
   toggle.className = "theme-toggle";
