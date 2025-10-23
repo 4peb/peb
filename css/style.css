@@ -140,6 +140,8 @@ footer {
   font-weight: 600;
   border: none;
   cursor: pointer;
+  border-radius: 2rem; /* FULLY ROUNDED BUTTON */
+  padding: 0.7rem 1.2rem;
 }
 
 .auth-form p {
