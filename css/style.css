@@ -183,3 +183,49 @@ body.dark-mode .hero {
   nav { gap: 8px; }
   .hero { padding: 36px 14px; min-height: 60vh; }
 }
+/* Shop Page Styling */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.product-image {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin: 0.5rem 0;
+}
+
+.buy-btn {
+  background: #0070f3;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.buy-btn:hover {
+  background: #0059c1;
+}
