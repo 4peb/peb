@@ -21,16 +21,16 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Welcome to Pebb</h1>
-    <p>Something small that could grow into anything.</p>
-    <p>Explore .</p>
-  </section>
+  <div id="content">
+    <section class="hero">
+      <h1>Welcome to Pebb</h1>
+      <p>Something small that could grow into anything.</p>
+    </section>
+  </div>
 
-  <!-- Main content can go here -->
-
-  <!-- Footer -->
   <div id="footer-container"></div>
+
+  <script type="module" src="/scripts/theme.js"></script>
   <script type="module">
     async function loadFooter() {
       const footerContainer = document.getElementById('footer-container');
@@ -39,8 +39,5 @@
     }
     loadFooter();
   </script>
-
-  <!-- Scripts -->
-  <script type="module" src="/scripts/theme.js"></script>
 </body>
 </html>
