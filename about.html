@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pebb | About</title>
-  <link rel="stylesheet" href="/dev/css/style.css" />
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="logo">Pebb</div>
-    <nav class="nav-links">
+  <header>
+    <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
+    <nav>
       <a href="/">Home</a>
       <a href="/shop">Shop</a>
-      <a href="/news">News</a>
+      <a href="/news" class="active">News</a>
       <a href="/watch">Watch</a>
-      <a href="/about" class="active">About</a>
-      <button id="theme-toggle">🌙</button>
-      <span id="user-display"></span>
+      <a href="/about">About</a>
+      <a href="/login">Sign In</a>
+      <a href="/signup">Sign Up</a>
+      <button id="theme-toggle">☀️ / 🌙</button>
     </nav>
   </header>
 
-  <main>
-    <h1>About Pebb</h1>
-    <p>Pebb is a small project that can grow into anything — news, streaming, shopping, or whatever we dream up next.</p>
+  <main class="hero">
+    <h1>About Us</h1>
+    <p>Learn about our journey</p>
   </main>
 
   <footer>
     <p>© 2025 Pebb. All rights reserved.</p>
   </footer>
 
-  <script src="/scripts/theme.js"></script>
-  <script src="/scripts/auth-status.js"></script>
+  <script type="module" src="/scripts/theme.js"></script>
+  <script type="module" src="/scripts/auth-status.js"></script>
 </body>
 </html>
