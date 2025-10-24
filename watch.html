@@ -10,7 +10,7 @@
   <header>
     <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
     <nav>
-      <a href="/" >Home</a>
+      <a href="/">Home</a>
       <a href="/shop">Shop</a>
       <a href="/news">News</a>
       <a href="/watch" class="active">Watch</a>
@@ -21,24 +21,31 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Watch</h1>
-    <p>Enjoy our videos and streams.</p>
-  </section>
+  <main id="content">
+    <section class="hero">
+      <h1>Watch</h1>
+      <p>Enjoy our streaming content below.</p>
+    </section>
 
-  <section style="max-width:1000px;margin:40px auto;">
-    <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.1);">
-      <h3>Video 1</h3>
-      <p>Video description</p>
-    </div>
-    <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.1);margin-top:20px;">
-      <h3>Video 2</h3>
-      <p>Video description</p>
-    </div>
-  </section>
+    <section class="watch-grid" style="max-width:1000px;margin:40px auto; display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
+      <div class="video-card">
+        <h3>Video 1</h3>
+        <p>Description</p>
+      </div>
+      <div class="video-card">
+        <h3>Video 2</h3>
+        <p>Description</p>
+      </div>
+      <div class="video-card">
+        <h3>Video 3</h3>
+        <p>Description</p>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <div id="footer-container"></div>
+  <footer id="footer-container"></footer>
+
+  <script type="module" src="/scripts/theme.js"></script>
   <script type="module">
     async function loadFooter() {
       const footerContainer = document.getElementById('footer-container');
@@ -47,7 +54,5 @@
     }
     loadFooter();
   </script>
-
-  <script type="module" src="/scripts/theme.js"></script>
 </body>
 </html>
