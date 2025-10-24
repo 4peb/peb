@@ -10,7 +10,7 @@
   <header>
     <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
     <nav>
-      <a href="/" >Home</a>
+      <a href="/">Home</a>
       <a href="/shop">Shop</a>
       <a href="/news">News</a>
       <a href="/watch">Watch</a>
@@ -21,18 +21,20 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>About Pebb</h1>
-    <p>Learn more about our platform and mission.</p>
-  </section>
+  <main id="content">
+    <section class="hero">
+      <h1>About Pebb</h1>
+      <p>Learn more about us and our mission.</p>
+    </section>
 
-  <section style="max-width:1000px;margin:40px auto;">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a ligula et sapien euismod hendrerit.</p>
-    <p>More content can go here.</p>
-  </section>
+    <section style="max-width:800px;margin:40px auto;text-align:center;">
+      <p>Pebb is a flexible platform that can grow into anything you want — shop, news, streaming, and more.</p>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <div id="footer-container"></div>
+  <footer id="footer-container"></footer>
+
+  <script type="module" src="/scripts/theme.js"></script>
   <script type="module">
     async function loadFooter() {
       const footerContainer = document.getElementById('footer-container');
@@ -41,7 +43,5 @@
     }
     loadFooter();
   </script>
-
-  <script type="module" src="/scripts/theme.js"></script>
 </body>
 </html>
