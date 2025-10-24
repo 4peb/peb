@@ -1,5 +1,3 @@
-/* ----------------------------------- */
-/*  Root variables */
 :root {
   --primary: #007bff;
   --bg-color: #f0f2f5;
@@ -9,7 +7,7 @@
 }
 
 body.dark {
-  --primary: #0056b3; /* darker blue for hero */
+  --primary: #0056b3;
   --bg-color: #121212;
   --text-color: #eee;
   --header-bg: #1a1a1a;
@@ -17,7 +15,7 @@ body.dark {
 }
 
 /* ----------------------------------- */
-/*  Reset & layout */
+/* Layout & sticky footer */
 html, body {
   margin: 0;
   padding: 0;
@@ -27,62 +25,44 @@ html, body {
   color: var(--text-color);
   display: flex;
   flex-direction: column;
-  transition: background 0.3s, color 0.3s;
 }
 
-/* Make the page content stretch and footer sticky */
-#content {
-  flex: 1 0 auto;
-}
-
-#footer-container {
-  flex-shrink: 0;
-}
-
-/* ----------------------------------- */
-/*  Header */
 header {
+  flex-shrink: 0;
   display: flex;
-  flex-wrap: wrap; /* allows wrapping on mobile */
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   background: var(--header-bg);
   padding: 10px 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  z-index: 1000;
 }
 
-.logo {
-  height: 45px;
-}
-
-nav {
+main#content {
+  flex: 1 0 auto; /* Makes content take up remaining space */
   display: flex;
-  flex-wrap: wrap; /* wrap nav links on small screens */
-  align-items: center;
-  gap: 15px;
+  flex-direction: column;
 }
 
-nav a {
-  color: var(--link-color);
-  text-decoration: none;
-  font-weight: 600;
-}
-
-nav a.active {
-  color: var(--primary);
-  text-decoration: underline;
-}
-
-#theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
+footer#footer-container {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 20px;
+  background: var(--header-bg);
+  font-size: 14px;
+  color: var(--text-color);
 }
 
 /* ----------------------------------- */
-/*  Hero sections */
+/* Header styling */
+.logo { height: 45px; }
+nav { display: flex; flex-wrap: wrap; gap: 15px; }
+nav a { text-decoration: none; color: var(--link-color); font-weight: 600; }
+nav a.active { color: var(--primary); text-decoration: underline; }
+#theme-toggle { background: none; border: none; cursor: pointer; font-size: 18px; }
+
+/* ----------------------------------- */
+/* Hero sections */
 .hero, .shop-hero {
   background: var(--primary);
   color: white;
@@ -91,12 +71,10 @@ nav a.active {
   transition: background 0.3s;
 }
 
-.shop-hero {
-  padding: 60px 20px;
-}
+.shop-hero { padding: 60px 20px; }
 
 /* ----------------------------------- */
-/*  Shop grid */
+/* Shop grid */
 .shop-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -104,7 +82,6 @@ nav a.active {
   margin: 40px auto;
   max-width: 1000px;
 }
-
 .product {
   background: white;
   color: #333;
@@ -115,14 +92,13 @@ nav a.active {
 }
 
 /* ----------------------------------- */
-/*  Auth forms */
+/* Auth forms */
 .auth-container {
   text-align: center;
   background: var(--primary);
   color: white;
   padding: 60px 20px;
 }
-
 .auth-container form {
   display: flex;
   flex-direction: column;
@@ -130,14 +106,12 @@ nav a.active {
   max-width: 350px;
   margin: 0 auto;
 }
-
 .auth-container input, .auth-container button {
   padding: 12px;
   border: none;
-  border-radius: 30px; /* Rounded buttons */
+  border-radius: 30px;
   font-size: 16px;
 }
-
 .auth-container button {
   background: white;
   color: var(--primary);
@@ -145,43 +119,21 @@ nav a.active {
   cursor: pointer;
   transition: background 0.2s;
 }
-
-.auth-container button:hover {
-  background: #eee;
-}
+.auth-container button:hover { background: #eee; }
 
 /* ----------------------------------- */
-/*  Footer */
-#footer-container footer {
-  text-align: center;
-  padding: 20px;
-  background: var(--header-bg);
-  font-size: 14px;
-  color: var(--text-color);
-}
-
-#footer-container footer a {
+/* Footer links */
+footer#footer-container a {
   color: var(--link-color);
   text-decoration: none;
   margin: 0 8px;
 }
-
-#footer-container footer a:hover {
-  text-decoration: underline;
-}
+footer#footer-container a:hover { text-decoration: underline; }
 
 /* ----------------------------------- */
-/*  Responsive adjustments */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  header {
-    padding: 10px 15px;
-  }
-
-  nav {
-    gap: 10px;
-  }
-
-  .hero, .shop-hero {
-    padding: 60px 15px;
-  }
+  header { padding: 10px 15px; }
+  nav { gap: 10px; }
+  .hero, .shop-hero { padding: 60px 15px; }
 }
