@@ -10,7 +10,7 @@
   <header>
     <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
     <nav>
-      <a href="/" >Home</a>
+      <a href="/">Home</a>
       <a href="/shop">Shop</a>
       <a href="/news" class="active">News</a>
       <a href="/watch">Watch</a>
@@ -21,24 +21,27 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Latest News</h1>
-    <p>Stay up to date with the latest happenings.</p>
-  </section>
+  <div id="content">
+    <section class="hero">
+      <h1>Latest News</h1>
+      <p>Stay up to date with the latest happenings.</p>
+    </section>
 
-  <section style="max-width:1000px;margin:40px auto;">
-    <article>
-      <h2>News Item 1</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </article>
-    <article>
-      <h2>News Item 2</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </article>
-  </section>
+    <section style="max-width:1000px;margin:40px auto;">
+      <article>
+        <h2>News Item 1</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </article>
+      <article>
+        <h2>News Item 2</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </article>
+    </section>
+  </div>
 
-  <!-- Footer -->
   <div id="footer-container"></div>
+
+  <script type="module" src="/scripts/theme.js"></script>
   <script type="module">
     async function loadFooter() {
       const footerContainer = document.getElementById('footer-container');
@@ -47,7 +50,5 @@
     }
     loadFooter();
   </script>
-
-  <script type="module" src="/scripts/theme.js"></script>
 </body>
 </html>
