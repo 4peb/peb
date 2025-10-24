@@ -3,37 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pebb | News</title>
+  <title>Pebb - Watch</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
     <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
     <nav>
-      <a href="/">Home</a>
+      <a href="/" >Home</a>
       <a href="/shop">Shop</a>
-      <a href="/news" class="active">News</a>
-      <a href="/watch">Watch</a>
+      <a href="/news">News</a>
+      <a href="/watch" class="active">Watch</a>
       <a href="/about">About</a>
       <a href="/login">Sign In</a>
       <a href="/signup">Sign Up</a>
-      <button id="theme-toggle">☀️ / 🌙</button>
+      <button id="theme-toggle">🌓</button>
     </nav>
   </header>
 
-  <main class="hero">
-    <h1>Latest News</h1>
-    <p>Watch your favourite content right here on Pebb.</p>
-  </main>
+  <section class="hero">
+    <h1>Watch</h1>
+    <p>Enjoy our videos and streams.</p>
+  </section>
 
-<footer>
-  <p>© 2025 Pebb. All rights reserved.</p>
-  <p>Contact: <a href="mailto:eastgrip@gmail.com">eastgrip@gmail.com</a> |
-     <a href="/tos">TOS</a> |
-     <a href="/privacy">Privacy</a></p>
-</footer>
+  <section style="max-width:1000px;margin:40px auto;">
+    <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.1);">
+      <h3>Video 1</h3>
+      <p>Video description</p>
+    </div>
+    <div style="background:#fff;padding:20px;border-radius:12px;box-shadow:0 3px 10px rgba(0,0,0,0.1);margin-top:20px;">
+      <h3>Video 2</h3>
+      <p>Video description</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  <script type="module">
+    async function loadFooter() {
+      const footerContainer = document.getElementById('footer-container');
+      const res = await fetch('/assets/footer.html');
+      if (res.ok) footerContainer.innerHTML = await res.text();
+    }
+    loadFooter();
+  </script>
 
   <script type="module" src="/scripts/theme.js"></script>
-  <script type="module" src="/scripts/auth-status.js"></script>
 </body>
 </html>
