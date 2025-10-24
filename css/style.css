@@ -1,106 +1,107 @@
-/* === Base Styles === */
+/* Reset and base styles */
 body {
-  font-family: 'Inter', sans-serif;
   margin: 0;
-  background: #f4f6f8;
-  color: #222;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0b0c10;
+  color: #c5c6c7;
 }
 
 header {
-  background: white;
-  padding: 15px 30px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-}
-
-.header-container {
+  background-color: #1f2833;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
 }
 
-.logo {
-  height: 40px;
+header h1 {
+  color: #66fcf1;
+  font-size: 24px;
+  margin: 0;
 }
 
 nav a {
-  margin: 0 12px;
+  color: #c5c6c7;
   text-decoration: none;
-  color: #004aad;
-  font-weight: 600;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  color: #0068ff;
+  color: #66fcf1;
+}
+
+.username-display {
+  color: #66fcf1;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 main {
-  flex: 1;
-  background: #e8f1ff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
 }
 
-footer {
-  background: white;
-  text-align: center;
-  padding: 15px;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.08);
-}
-
-/* === Auth Page Styles === */
-.auth-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-}
-
-.auth-box {
-  background: white;
-  padding: 40px 35px;
-  border-radius: 16px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 420px;
+/* Forms (signup & login) */
+.auth-container {
+  background-color: #1f2833;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(102, 252, 241, 0.1);
+  max-width: 400px;
+  margin: 80px auto;
   text-align: center;
 }
 
-.auth-box h1 {
-  color: #004aad;
+.auth-container h2 {
+  color: #66fcf1;
   margin-bottom: 25px;
 }
 
-.auth-box form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.auth-box input {
-  padding: 12px 15px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
+.auth-container input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 10px;
+  background-color: #0b0c10;
+  color: #c5c6c7;
   font-size: 15px;
 }
 
-.btn-primary {
-  background-color: #004aad;
-  color: white;
-  border: none;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.2s;
+.auth-container input::placeholder {
+  color: #45a29e;
 }
 
-.btn-primary:hover {
-  background-color: #0066ff;
+.auth-container button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 25px; /* rounded now */
+  background-color: #66fcf1;
+  color: #0b0c10;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
+
+.auth-container button:hover {
+  background-color: #45a29e;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1f2833;
+  color: #45a29e;
+  margin-top: 40px;
+}
+
 
 .message {
   margin-top: 15px;
