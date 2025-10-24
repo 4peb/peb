@@ -3,37 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pebb</title>
+  <title>Pebb - Home</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
     <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
     <nav>
-      <a href="/">Home</a>
+      <a href="/" class="active">Home</a>
       <a href="/shop">Shop</a>
       <a href="/news">News</a>
       <a href="/watch">Watch</a>
       <a href="/about">About</a>
       <a href="/login">Sign In</a>
       <a href="/signup">Sign Up</a>
-      <button id="theme-toggle">☀️ / 🌙</button>
+      <button id="theme-toggle">🌓</button>
     </nav>
   </header>
 
-  <main class="hero">
+  <section class="hero">
     <h1>Welcome to Pebb</h1>
     <p>Something small that could grow into anything.</p>
-  </main>
+    <p>Explore .</p>
+  </section>
 
-<footer>
-  <p>© 2025 Pebb. All rights reserved.</p>
-  <p>Contact: <a href="mailto:eastgrip@gmail.com">eastgrip@gmail.com</a> |
-     <a href="/tos">TOS</a> |
-     <a href="/privacy">Privacy</a></p>
-</footer>
+  <!-- Main content can go here -->
 
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  <script type="module">
+    async function loadFooter() {
+      const footerContainer = document.getElementById('footer-container');
+      const res = await fetch('/assets/footer.html');
+      if (res.ok) footerContainer.innerHTML = await res.text();
+    }
+    loadFooter();
+  </script>
+
+  <!-- Scripts -->
   <script type="module" src="/scripts/theme.js"></script>
-  <script type="module" src="/scripts/auth-status.js"></script>
 </body>
 </html>
