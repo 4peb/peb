@@ -22,32 +22,33 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
   font-family: 'Poppins', sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
   transition: background 0.3s, color 0.3s;
 }
 
-body > header, body > section, body > div#footer-container {
-  flex-shrink: 0;
+/* Make the page content stretch and footer sticky */
+#content {
+  flex: 1 0 auto;
 }
 
-body > section {
-  flex-grow: 1;
+#footer-container {
+  flex-shrink: 0;
 }
 
 /* ----------------------------------- */
 /*  Header */
 header {
   display: flex;
+  flex-wrap: wrap; /* allows wrapping on mobile */
   align-items: center;
   justify-content: space-between;
   background: var(--header-bg);
-  padding: 15px 50px;
+  padding: 10px 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  font-size: 16px;
   z-index: 1000;
 }
 
@@ -57,8 +58,9 @@ header {
 
 nav {
   display: flex;
+  flex-wrap: wrap; /* wrap nav links on small screens */
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
 nav a {
@@ -85,11 +87,10 @@ nav a.active {
   background: var(--primary);
   color: white;
   text-align: center;
-  padding: 100px 20px;
+  padding: 80px 20px;
   transition: background 0.3s;
 }
 
-/* Shop hero slightly smaller */
 .shop-hero {
   padding: 60px 20px;
 }
@@ -170,18 +171,17 @@ nav a.active {
 }
 
 /* ----------------------------------- */
-/*  Misc adjustments */
-section {
-  box-sizing: border-box;
-}
+/*  Responsive adjustments */
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px;
+  }
 
-a {
-  transition: color 0.2s;
-}
+  nav {
+    gap: 10px;
+  }
 
-/* Remove extra blank space */
-body::after {
-  content: "";
-  display: block;
-  height: 0;
+  .hero, .shop-hero {
+    padding: 60px 15px;
+  }
 }
