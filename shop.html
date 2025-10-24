@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pebb | Shop</title>
-  <link rel="stylesheet" href="/dev/css/style.css" />
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <header class="main-header">
-    <div class="logo">Pebb</div>
-    <nav class="nav-links">
+  <header>
+    <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
+    <nav>
       <a href="/">Home</a>
       <a href="/shop" class="active">Shop</a>
       <a href="/news">News</a>
       <a href="/watch">Watch</a>
       <a href="/about">About</a>
-      <button id="theme-toggle">🌙</button>
-      <span id="user-display"></span>
+      <a href="/login">Sign In</a>
+      <a href="/signup">Sign Up</a>
+      <button id="theme-toggle">☀️ / 🌙</button>
     </nav>
   </header>
 
-  <main>
-    <h1>Shop</h1>
-    <div class="shop-items">
-      <div class="item-card">
-        <img src="/assets/logo.png" alt="Item 1" />
-        <h2>Example Product</h2>
-        <p>$9.99</p>
-        <button>Add to Cart</button>
-      </div>
-      <div class="item-card">
-        <img src="/assets/logo.png" alt="Item 2" />
-        <h2>Another Product</h2>
+  <main class="hero shop-hero">
+    <h1>Our Products</h1>
+    <div class="shop-grid">
+      <div class="product">
+        <h3>Example Item</h3>
         <p>$19.99</p>
         <button>Add to Cart</button>
       </div>
@@ -42,7 +36,8 @@
     <p>© 2025 Pebb. All rights reserved.</p>
   </footer>
 
-  <script src="/scripts/theme.js"></script>
-  <script src="/scripts/auth-status.js"></script>
+  <script type="module" src="/scripts/theme.js"></script>
+  <script type="module" src="/scripts/shop.js"></script>
+  <script type="module" src="/scripts/auth-status.js"></script>
 </body>
 </html>
