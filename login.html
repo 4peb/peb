@@ -1,73 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pebb — Sign In</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <header>
-    <h1 onclick="window.location.href='index.html'">MyWebsite</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="news.html">News</a>
-      <a href="watch.html">Watch</a>
-      <a href="about.html">About</a>
-      <a href="login.html">Sign In</a>
-      <a href="signup.html">Sign Up</a>
-    </nav>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <span id="usernameDisplay" class="username-display"></span>
-      <button id="modeToggle">☀️</button>
-    </div>
-  </header>
+  <main class="blue-section">
+    <h1 class="title">Sign In</h1>
+    <p class="subtitle">Welcome back — sign in to your account.</p>
 
-  <main>
-    <div class="auth-container">
-      <h2>Welcome Back</h2>
-      <input type="email" id="email" placeholder="Email address">
-      <input type="password" id="password" placeholder="Password">
-      <button id="loginBtn">Sign In</button>
-      <p>Don’t have an account? <a href="signup.html">Sign up</a></p>
-    </div>
+    <form id="login-form" class="auth-form" style="margin-top:1rem;">
+      <input id="email" type="email" name="email" placeholder="email" required />
+      <input id="password" type="password" name="password" placeholder="password" required />
+      <button class="form-btn" type="submit">Sign in</button>
+    </form>
   </main>
 
-  <footer>© 2025 MyWebsite</footer>
-
-  <script>
-    const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    document.getElementById('loginBtn').addEventListener('click', async () => {
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-
-      if (error) {
-        alert(error.message);
-      } else {
-        const user = data.user;
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('username')
-          .eq('id', user.id)
-          .single();
-
-        localStorage.setItem('username', profile.username);
-        window.location.href = 'index.html';
-      }
-    });
-  </script>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-    });
-  </script>
+  <script type="module" src="/scripts/layout.js"></script>
 </body>
 </html>
