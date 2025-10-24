@@ -1,27 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pebb — Shop</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pebb - Shop</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="blue-section">
-    <h1 class="title">Our Products</h1>
-    <p class="subtitle">Explore what we have to offer.</p>
+  <header class="main-header">
+    <div class="logo">Pebb</div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="news.html">News</a>
+      <a href="watch.html">Watch</a>
+      <a href="about.html">About</a>
+    </nav>
+    <button id="theme-toggle">☀️</button>
+  </header>
 
-    <div class="product-grid">
-      <div class="card">
-        <img src="/assets/logo.png" alt="Product sample">
-        <h3>Sample Product</h3>
-        <p class="price">$9.99</p>
-        <button class="buy-btn">Buy</button>
+  <main class="shop-container">
+    <h1>Shop</h1>
+    <div class="shop-items">
+      <div class="item-card">
+        <img src="assets/item1.png" alt="Item 1" />
+        <h2>Item 1</h2>
+        <p>£10.00</p>
+        <button>Add to Cart</button>
       </div>
-      <!-- replicate more .card blocks -->
+      <div class="item-card">
+        <img src="assets/item2.png" alt="Item 2" />
+        <h2>Item 2</h2>
+        <p>£15.00</p>
+        <button>Add to Cart</button>
+      </div>
+      <!-- Add more items here -->
     </div>
   </main>
 
-  <script type="module" src="/scripts/layout.js"></script>
+  <footer>
+    <p>© 2025 Pebb. All rights reserved.</p>
+  </footer>
+
+  <script src="scripts/theme.js"></script>
 </body>
 </html>
