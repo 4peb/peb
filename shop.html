@@ -3,35 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pebb - Shop</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Pebb | Shop</title>
+  <link rel="stylesheet" href="/dev/css/style.css" />
 </head>
 <body>
   <header class="main-header">
     <div class="logo">Pebb</div>
     <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="shop.html" class="active">Shop</a>
-      <a href="news.html">News</a>
-      <a href="watch.html">Watch</a>
-      <a href="about.html">About</a>
+      <a href="/">Home</a>
+      <a href="/shop" class="active">Shop</a>
+      <a href="/news">News</a>
+      <a href="/watch">Watch</a>
+      <a href="/about">About</a>
+      <button id="theme-toggle">🌙</button>
+      <span id="user-display"></span>
     </nav>
-    <button id="theme-toggle">☀️</button>
   </header>
 
-  <main class="shop-container">
+  <main>
     <h1>Shop</h1>
     <div class="shop-items">
       <div class="item-card">
-        <img src="assets/item1.png" alt="Item 1" />
-        <h2>Item 1</h2>
-        <p>£10.00</p>
+        <img src="/assets/logo.png" alt="Item 1" />
+        <h2>Example Product</h2>
+        <p>$9.99</p>
         <button>Add to Cart</button>
       </div>
       <div class="item-card">
-        <img src="assets/item2.png" alt="Item 2" />
-        <h2>Item 2</h2>
-        <p>£15.00</p>
+        <img src="/assets/logo.png" alt="Item 2" />
+        <h2>Another Product</h2>
+        <p>$19.99</p>
         <button>Add to Cart</button>
       </div>
     </div>
@@ -41,6 +42,7 @@
     <p>© 2025 Pebb. All rights reserved.</p>
   </footer>
 
-  <script src="scripts/theme.js"></script>
+  <script src="/scripts/theme.js"></script>
+  <script src="/scripts/auth-status.js"></script>
 </body>
 </html>
