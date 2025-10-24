@@ -1,3 +1,5 @@
+/* ----------------------------------- */
+/*  Root variables */
 :root {
   --primary: #007bff;
   --bg-color: #f0f2f5;
@@ -14,17 +16,30 @@ body.dark {
   --link-color: #eee;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
+/* ----------------------------------- */
+/*  Reset & layout */
+html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Poppins', sans-serif;
   background: var(--bg-color);
   color: var(--text-color);
   transition: background 0.3s, color 0.3s;
 }
 
-/* Header */
+body > header, body > section, body > div#footer-container {
+  flex-shrink: 0;
+}
+
+body > section {
+  flex-grow: 1;
+}
+
+/* ----------------------------------- */
+/*  Header */
 header {
   display: flex;
   align-items: center;
@@ -33,6 +48,7 @@ header {
   padding: 15px 50px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   font-size: 16px;
+  z-index: 1000;
 }
 
 .logo {
@@ -63,22 +79,23 @@ nav a.active {
   font-size: 18px;
 }
 
-/* Hero sections */
-.hero {
+/* ----------------------------------- */
+/*  Hero sections */
+.hero, .shop-hero {
   background: var(--primary);
   color: white;
   text-align: center;
   padding: 100px 20px;
+  transition: background 0.3s;
 }
 
+/* Shop hero slightly smaller */
 .shop-hero {
-  background: var(--primary);
-  color: white;
-  text-align: center;
   padding: 60px 20px;
 }
 
-/* Shop grid */
+/* ----------------------------------- */
+/*  Shop grid */
 .shop-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -96,7 +113,8 @@ nav a.active {
   text-align: center;
 }
 
-/* Auth forms */
+/* ----------------------------------- */
+/*  Auth forms */
 .auth-container {
   text-align: center;
   background: var(--primary);
@@ -115,7 +133,7 @@ nav a.active {
 .auth-container input, .auth-container button {
   padding: 12px;
   border: none;
-  border-radius: 30px;
+  border-radius: 30px; /* Rounded buttons */
   font-size: 16px;
 }
 
@@ -131,7 +149,8 @@ nav a.active {
   background: #eee;
 }
 
-/* Footer container */
+/* ----------------------------------- */
+/*  Footer */
 #footer-container footer {
   text-align: center;
   padding: 20px;
@@ -148,4 +167,21 @@ nav a.active {
 
 #footer-container footer a:hover {
   text-decoration: underline;
+}
+
+/* ----------------------------------- */
+/*  Misc adjustments */
+section {
+  box-sizing: border-box;
+}
+
+a {
+  transition: color 0.2s;
+}
+
+/* Remove extra blank space */
+body::after {
+  content: "";
+  display: block;
+  height: 0;
 }
