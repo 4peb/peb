@@ -1,71 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pebb — Sign Up</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-  <header>
-    <h1 onclick="window.location.href='index.html'">MyWebsite</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="news.html">News</a>
-      <a href="watch.html">Watch</a>
-      <a href="about.html">About</a>
-      <a href="login.html">Sign In</a>
-      <a href="signup.html">Sign Up</a>
-    </nav>
-    <div style="display:flex;align-items:center;gap:10px;">
-      <span id="usernameDisplay" class="username-display"></span>
-      <button id="modeToggle">☀️</button>
-    </div>
-  </header>
+  <main class="blue-section">
+    <h1 class="title">Create an Account</h1>
+    <p class="subtitle">Choose a username and sign up.</p>
 
-  <main>
-    <div class="auth-container">
-      <h2>Create an Account</h2>
-      <input type="text" id="username" placeholder="Choose a username">
-      <input type="email" id="email" placeholder="Email address">
-      <input type="password" id="password" placeholder="Password">
-      <button id="signupBtn">Sign Up</button>
-      <p>Already have an account? <a href="login.html">Sign in</a></p>
-    </div>
+    <form id="signup-form" class="auth-form" style="margin-top:1rem;">
+      <input id="username" name="username" placeholder="username (letters, numbers, underscores)" required />
+      <input id="email" type="email" name="email" placeholder="email" required />
+      <input id="password" type="password" name="password" placeholder="password" required />
+      <button class="form-btn" type="submit">Create account</button>
+    </form>
   </main>
 
-  <footer>© 2025 MyWebsite</footer>
-
-  <script>
-    const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    document.getElementById('signupBtn').addEventListener('click', async () => {
-      const username = document.getElementById('username').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      if (!/^[A-Za-z0-9_]+$/.test(username)) {
-        alert('Username can only contain letters, numbers, and underscores.');
-        return;
-      }
-
-      const { data, error } = await supabase.auth.signUp({ email, password });
-
-      if (error) {
-        alert(error.message);
-      } else {
-        const user = data.user;
-        await supabase.from('profiles').insert([{ id: user.id, username, banned: false }]);
-        alert('Account created! You can now log in.');
-        window.location.href = 'login.html';
-      }
-    });
-  </script>
-
-  <script src="script.js"></script>
+  <script type="module" src="/scripts/layout.js"></script>
 </body>
 </html>
