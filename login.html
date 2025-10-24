@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign In</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <header>
-    <h1>MyWebsite</h1>
+    <h1 onclick="window.location.href='index.html'">MyWebsite</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
@@ -19,14 +19,17 @@
       <a href="login.html">Sign In</a>
       <a href="signup.html">Sign Up</a>
     </nav>
-    <span id="usernameDisplay" class="username-display"></span>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span id="usernameDisplay" class="username-display"></span>
+      <button id="modeToggle">☀️</button>
+    </div>
   </header>
 
   <main>
     <div class="auth-container">
       <h2>Welcome Back</h2>
-      <input type="email" id="email" placeholder="Email address" />
-      <input type="password" id="password" placeholder="Password" />
+      <input type="email" id="email" placeholder="Email address">
+      <input type="password" id="password" placeholder="Password">
       <button id="loginBtn">Sign In</button>
       <p>Don’t have an account? <a href="signup.html">Sign up</a></p>
     </div>
@@ -42,7 +45,6 @@
     document.getElementById('loginBtn').addEventListener('click', async () => {
       const email = document.getElementById('email').value.trim();
       const password = document.getElementById('password').value.trim();
-
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
@@ -58,6 +60,13 @@
         localStorage.setItem('username', profile.username);
         window.location.href = 'index.html';
       }
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
     });
   </script>
 </body>
