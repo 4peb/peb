@@ -1,17 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pebb — Home</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pebb</title>
+  <link rel="stylesheet" href="/dev/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <main class="blue-section">
-    <h1 class="title">Welcome to Pebb</h1>
-    <p class="subtitle">Something small that could grow into anything.</p>
+  <header class="main-header">
+    <div class="logo">Pebb</div>
+    <nav class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/news">News</a>
+      <a href="/watch">Watch</a>
+      <a href="/about">About</a>
+      <button id="theme-toggle">🌙</button>
+      <span id="user-display"></span>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Welcome to Pebb</h1>
+    <p>Something small that could grow into anything.</p>
   </main>
 
-  <script type="module" src="/scripts/layout.js"></script>
+  <footer>
+    <p>© 2025 Pebb. All rights reserved.</p>
+  </footer>
+
+  <script src="/scripts/theme.js"></script>
+  <script src="/scripts/auth-status.js"></script>
 </body>
 </html>
