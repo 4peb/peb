@@ -1,20 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pebb — News</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pebb | News</title>
+  <link rel="stylesheet" href="/dev/css/style.css" />
 </head>
 <body>
-  <main class="blue-section">
-    <h1 class="title">Latest News</h1>
-    <p class="subtitle">Stay up-to-date with Pebb.</p>
-    <div style="width:100%;max-width:900px;margin:1rem auto;color:#fff">
-      <!-- news items go here -->
-    </div>
+  <header class="main-header">
+    <div class="logo">Pebb</div>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/news" class="active">News</a>
+      <a href="/watch">Watch</a>
+      <a href="/about">About</a>
+      <button id="theme-toggle">🌙</button>
+      <span id="user-display"></span>
+    </nav>
+  </header>
+
+  <main>
+    <h1>News</h1>
+    <p>Stay up to date with the latest updates and announcements.</p>
   </main>
 
-  <script type="module" src="/scripts/layout.js"></script>
+  <footer>
+    <p>© 2025 Pebb. All rights reserved.</p>
+  </footer>
+
+  <script src="/scripts/theme.js"></script>
+  <script src="/scripts/auth-status.js"></script>
 </body>
 </html>
