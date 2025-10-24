@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pebb — Profile</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="blue-section">
+    <h1 class="title">Your Profile</h1>
+    <p class="subtitle" id="profile-sub">Loading...</p>
+    <div id="profile-actions" style="margin-top:1rem;"></div>
+  </main>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+    const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    async function loadProfile(){
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        document.getElementById('profile-sub').textContent = 'You must be signed in to view this page.';
+        return;
+      }
+      const { data: profile } = await supabase.from('profiles').select('username, created_at, banned').eq('id', user.id).maybeSingle();
+      document.getElementById('profile-sub').textContent = profile ? `@${profile.username}` : user.email;
+      const actions = document.getElementById('profile-actions');
+      actions.innerHTML = '<button id="logout" class="form-btn">Logout</button>';
+      document.getElementById('logout').addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        window.location.href = '/';
+      });
+    }
+    loadProfile();
+  </script>
+  <script type="module" src="/scripts/layout.js"></script>
+</body>
+</html>
