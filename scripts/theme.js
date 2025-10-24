@@ -1,14 +1,13 @@
-const toggle = document.getElementById("theme-toggle");
-const body = document.body;
+// Theme toggle
+const toggleBtn = document.getElementById('theme-toggle');
+const currentTheme = localStorage.getItem('pebb-theme');
 
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark-mode");
-  toggle.textContent = "🌙";
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark');
 }
 
-toggle.addEventListener("click", () => {
-  const dark = body.classList.toggle("dark-mode");
-  toggle.textContent = dark ? "🌙" : "☀️";
-  localStorage.setItem("theme", dark ? "dark" : "light");
+toggleBtn?.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  const theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+  localStorage.setItem('pebb-theme', theme);
 });
