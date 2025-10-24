@@ -3,33 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up | Pebb</title>
+  <title>Pebb - Sign Up</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
     <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
+    <nav>
+      <a href="/" >Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/news">News</a>
+      <a href="/watch">Watch</a>
+      <a href="/about">About</a>
+      <a href="/login">Sign In</a>
+      <a href="/signup" class="active">Sign Up</a>
+      <button id="theme-toggle">🌓</button>
+    </nav>
   </header>
 
-  <main class="auth-container">
-    <h1>Create an Account</h1>
+  <section class="auth-container">
+    <h1>Create Account</h1>
     <form id="signup-form">
       <input type="text" id="username" placeholder="Username" required>
       <input type="email" id="email" placeholder="Email" required>
       <input type="password" id="password" placeholder="Password" required>
       <button type="submit">Sign Up</button>
     </form>
-    <p>Already have an account? <a href="/login">Sign in here</a>.</p>
-  </main>
+  </section>
 
-<footer>
-  <p>© 2025 Pebb. All rights reserved.</p>
-  <p>Contact: <a href="mailto:eastgrip@gmail.com">eastgrip@gmail.com</a> |
-     <a href="/tos">TOS</a> |
-     <a href="/privacy">Privacy</a></p>
-</footer>
-  
-  <script type="module" src="/scripts/auth.js"></script>
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  <script type="module">
+    async function loadFooter() {
+      const footerContainer = document.getElementById('footer-container');
+      const res = await fetch('/assets/footer.html');
+      if (res.ok) footerContainer.innerHTML = await res.text();
+    }
+    loadFooter();
+  </script>
+
   <script type="module" src="/scripts/theme.js"></script>
 </body>
 </html>
