@@ -1,17 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pebb — Watch</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pebb | Watch</title>
+  <link rel="stylesheet" href="/dev/css/style.css" />
 </head>
 <body>
-  <main class="blue-section">
-    <h1 class="title">Watch Something New</h1>
-    <p class="subtitle">Streaming made simple — powered by Pebb.</p>
+  <header class="main-header">
+    <div class="logo">Pebb</div>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/shop">Shop</a>
+      <a href="/news">News</a>
+      <a href="/watch" class="active">Watch</a>
+      <a href="/about">About</a>
+      <button id="theme-toggle">🌙</button>
+      <span id="user-display"></span>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Watch</h1>
+    <p>Watch your favorite content right here on Pebb.</p>
   </main>
 
-  <script type="module" src="/scripts/layout.js"></script>
+  <footer>
+    <p>© 2025 Pebb. All rights reserved.</p>
+  </footer>
+
+  <script src="/scripts/theme.js"></script>
+  <script src="/scripts/auth-status.js"></script>
 </body>
 </html>
