@@ -3,45 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pebb | Shop</title>
+  <title>Pebb - Shop</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
     <img src="/assets/logo.png" alt="Pebb Logo" class="logo">
     <nav>
-      <a href="/">Home</a>
+      <a href="/" >Home</a>
       <a href="/shop" class="active">Shop</a>
       <a href="/news">News</a>
       <a href="/watch">Watch</a>
       <a href="/about">About</a>
       <a href="/login">Sign In</a>
       <a href="/signup">Sign Up</a>
-      <button id="theme-toggle">☀️ / 🌙</button>
+      <button id="theme-toggle">🌓</button>
     </nav>
   </header>
 
-  <main class="hero shop-hero">
+  <section class="shop-hero">
     <h1>Our Products</h1>
-    <div class="shop-grid">
-      <div class="product">
-        <h3>Example Item</h3>
-        <p>$19.99</p>
-        <button>Add to Cart</button>
-      </div>
+    <p>Check out what we have available.</p>
+  </section>
+
+  <section class="shop-grid">
+    <div class="product">
+      <h3>Product 1</h3>
+      <p>Description</p>
     </div>
-  </main>
+    <div class="product">
+      <h3>Product 2</h3>
+      <p>Description</p>
+    </div>
+    <div class="product">
+      <h3>Product 3</h3>
+      <p>Description</p>
+    </div>
+  </section>
 
-<footer>
-  <p>© 2025 Pebb. All rights reserved.</p>
-  <p>Contact: <a href="mailto:eastgrip@gmail.com">eastgrip@gmail.com</a> |
-     <a href="/tos">TOS</a> |
-     <a href="/privacy">Privacy</a></p>
-</footer>
-
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  <script type="module">
+    async function loadFooter() {
+      const footerContainer = document.getElementById('footer-container');
+      const res = await fetch('/assets/footer.html');
+      if (res.ok) footerContainer.innerHTML = await res.text();
+    }
+    loadFooter();
+  </script>
 
   <script type="module" src="/scripts/theme.js"></script>
-  <script type="module" src="/scripts/shop.js"></script>
-  <script type="module" src="/scripts/auth-status.js"></script>
 </body>
 </html>
