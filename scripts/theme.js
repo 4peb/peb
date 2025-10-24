@@ -1,4 +1,3 @@
-// Theme toggle
 const toggleBtn = document.getElementById('theme-toggle');
 const currentTheme = localStorage.getItem('pebb-theme');
 
