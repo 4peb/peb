@@ -106,9 +106,3 @@ footer {
   margin-top: 15px;
   font-weight: 500;
 }
-
-  .products-grid, .news-grid, .video-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-}
