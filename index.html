@@ -1,74 +1,17 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pebb - Home</title>
-  <link rel="stylesheet" href="/css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pebb — Home</title>
+  <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+  <main class="blue-section">
+    <h1 class="title">Welcome to Pebb</h1>
+    <p class="subtitle">Something small that could grow into anything.</p>
+  </main>
 
-<!-- Header with Auth -->
-<header>
-  <a href="/"><img src="/assets/logo.png" class="logo" alt="Pebb Logo"></a>
-  <nav>
-    <a href="/" class="active">Home</a>
-    <a href="/shop">Shop</a>
-    <a href="/news">News</a>
-    <a href="/watch">Watch</a>
-    <a href="/about">About</a>
-  </nav>
-  <div class="auth-buttons">
-    <a href="/signup" class="btn signup-btn">Sign Up</a>
-    <a href="/login" class="btn login-btn">Sign In</a>
-  </div>
-</header>
-
-<!-- Main Content -->
-<main class="full-height-main">
-  <section class="blue-section">
-    <h1>Welcome to Pebb</h1>
-    <p>Something small that could grow into anything.</p>
-    <p>Explore the site and see what we have!</p>
-  </section>
-</main>
-
-<footer>
-  © 2025 Pebb
-</footer>
-
-<!-- Supabase + Auth Script -->
-<script type="module">
-  import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
-  const SUPABASE_URL = 'https://qtipmzevjvtndxctahwp.supabase.co';
-  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF0aXBtemV2anZ0bmR4Y3RhaHdwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEyNDE5MzYsImV4cCI6MjA3NjgxNzkzNn0.J9jDw7vK80s8Im41Xp43si74U3hQvFb2dDMyexcgczc';
-  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-  window.supabase = supabase;
-
-  async function updateHeaderUser() {
-    const { data: { user } } = await supabase.auth.getUser();
-    const authButtons = document.querySelector('.auth-buttons');
-    if (!authButtons) return;
-
-    if (user) {
-      authButtons.innerHTML = `
-        <span class="user-email">${user.email}</span>
-        <button id="logout-btn" class="btn logout-btn">Logout</button>
-      `;
-      document.getElementById('logout-btn').addEventListener('click', async () => {
-        const { error } = await supabase.auth.signOut();
-        if (error) alert("Error: " + error.message);
-        else updateHeaderUser();
-      });
-    } else {
-      authButtons.innerHTML = `
-        <a href="/signup" class="btn signup-btn">Sign Up</a>
-        <a href="/login" class="btn login-btn">Sign In</a>
-      `;
-    }
-  }
-
-  updateHeaderUser();
-</script>
+  <script type="module" src="/scripts/layout.js"></script>
 </body>
 </html>
