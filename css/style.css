@@ -1,203 +1,127 @@
-/* RESET + BASE */
-* {
+:root {
+  --primary: #007bff;
+  --bg-color: #f8f9fa;
+  --text-color: #333;
+  --header-bg: #fff;
+  --link-color: #007bff;
+}
+
+body.dark {
+  --primary: #1e90ff;
+  --bg-color: #121212;
+  --text-color: #eee;
+  --header-bg: #1a1a1a;
+  --link-color: #66b3ff;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  transition: background 0.25s, color 0.25s, border-color 0.25s;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
 }
 
-html, body {
-  height: 100%;
-  font-family: 'Poppins', 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-}
-
-/* LIGHT THEME */
-:root {
-  --bg: #e9f2ff;
-  --text: #121212;
-  --header-bg: #fff;
-  --card-bg: #ffffff;
-  --border: #cdd8f0;
-}
-
-/* DARK THEME */
-body.dark-mode {
-  --bg: #0b1321;
-  --text: #f4f4f4;
-  --header-bg: #151b2e;
-  --card-bg: #1a2136;
-  --border: #2b3450;
-}
-
-/* HEADER */
-header.main-header {
-  background: var(--header-bg);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem 2rem;
+/* Header */
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--header-bg);
+  padding: 15px 50px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: 700;
+  height: 45px;
 }
 
-.nav-links {
+nav {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 20px;
 }
 
-.nav-links a {
+nav a {
+  color: var(--link-color);
   text-decoration: none;
-  color: var(--text);
-  font-weight: 500;
-  position: relative;
+  font-weight: 600;
 }
 
-.nav-links a.active::after,
-.nav-links a:hover::after {
-  content: "";
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--text);
+nav a.active {
+  text-decoration: underline;
 }
 
 #theme-toggle {
   background: none;
   border: none;
-  font-size: 1.2rem;
   cursor: pointer;
-  color: var(--text);
+  font-size: 18px;
 }
 
-/* MAIN BLUE SECTION */
-main {
-  flex: 1;
-  background: var(--bg);
-  border-top: 2px solid var(--border);
-  border-bottom: 2px solid var(--border);
+/* Main sections */
+.hero {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  border-radius: 0;
+}
+
+/* Shop grid */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.product {
+  background: white;
+  color: #333;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Auth forms */
+.auth-container {
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  padding: 60px 20px;
+}
+
+.auth-container form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 3rem 1.5rem;
-  text-align: center;
+  gap: 15px;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
-main h1 {
-  font-size: 2rem;
-  margin-bottom: 1.2rem;
-  font-weight: 600;
-}
-
-main p {
-  max-width: 700px;
-  line-height: 1.6;
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-}
-
-/* SHOP */
-.shop-items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  max-width: 1000px;
-  margin-top: 2rem;
-}
-
-.item-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 1.5rem;
-  text-align: center;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
-}
-
-.item-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  margin-bottom: 1rem;
-}
-
-.item-card button {
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
+.auth-container input, .auth-container button {
+  padding: 12px;
   border: none;
-  border-radius: 9999px;
-  background: var(--text);
-  color: var(--bg);
-  cursor: pointer;
-  font-weight: 500;
-}
-
-/* SIGNIN / SIGNUP */
-.auth-container {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 2rem;
-  width: 100%;
-  max-width: 400px;
-  margin: 4rem auto;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-}
-
-.auth-container h1 {
-  margin-bottom: 1.5rem;
-  font-weight: 600;
-}
-
-.auth-container input {
-  width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--text);
+  border-radius: 30px;
+  font-size: 16px;
 }
 
 .auth-container button {
-  width: 100%;
-  padding: 0.8rem;
-  border: none;
-  border-radius: 9999px;
-  background: var(--text);
-  color: var(--bg);
-  font-weight: 600;
+  background: white;
+  color: var(--primary);
+  font-weight: bold;
   cursor: pointer;
 }
 
-.auth-container button:hover {
-  opacity: 0.9;
-}
-
-/* FOOTER */
+/* Footer */
 footer {
   text-align: center;
-  padding: 1rem 0;
+  padding: 20px;
   background: var(--header-bg);
-  border-top: 1px solid var(--border);
-  font-size: 0.9rem;
-  margin-top: auto;
-}
-
-  background: var(--header-bg);
-  border-top: 1px solid var(--border);
-  font-size: 0.9rem;
-  margin-top: auto;
+  font-size: 14px;
+  color: var(--text-color);
 }
